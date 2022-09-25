@@ -11,5 +11,6 @@ class IResourcesFactory(ABC):
     def create_building(self, enum_building: EnumBuilding, level: int) -> pygame.Surface:
         pass
 
+    @abstractmethod
     def create_actor(self, enum_actor: EnumActor) -> pygame.Surface:
         pass

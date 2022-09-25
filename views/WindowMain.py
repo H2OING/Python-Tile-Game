@@ -18,6 +18,7 @@ from views.resources.interfaces.IResourcesFactory import IResourcesFactory
 
 MAP_MOVEMENT_SPEED = 30
 
+
 class WindowMain:
     def __init__(self):
         self.screen = pygame.display.set_mode(
@@ -31,7 +32,7 @@ class WindowMain:
         }
         self.surfaces_by_buildings: Dict[MapBuilding, Surface] = {}
 
-        self.resource_factories_by_tribes: Dict[EnumTribe, IResourcesFactory] ={
+        self.resource_factories_by_tribes: Dict[EnumTribe, IResourcesFactory] = {
             EnumTribe.Imperius: ResourcesFactoryImperius(),
             EnumTribe.Hoodrick: ResourceFactoryHoodrick()
         }
@@ -40,9 +41,7 @@ class WindowMain:
         self.game = ControllerGame.new_game()
 
         self.ui_button_new_game = ComponentButton(
-            Rect(5, 5, 200, 49)
-            ,"New Game"
-        )
+            Rect(5, 5, 200, 49), "New Game")
 
         self.ui_button_new_game.add_listener_click(self.on_click_new_game)
 
@@ -95,7 +94,6 @@ class WindowMain:
         for building in buildings_unused:
             self.surfaces_by_buildings.pop(building)
 
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.is_game_running = False
@@ -119,7 +117,6 @@ class WindowMain:
         self.game.window_location.y = max(0, self.game.window_location.y)
         self.game.window_location.y = min(self.game.map_size.y - self.game.window_size.y - 1,
                                           self.game.window_location.y)
-
 
     def draw(self):
         view_x_start = int(self.game.window_location.x)
@@ -164,13 +161,3 @@ class WindowMain:
         # TODO buildings
         # TODO actors
         # TODO UI
-
-
-
-
-
-
-
-
-
-

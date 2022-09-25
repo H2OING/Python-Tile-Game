@@ -17,7 +17,7 @@ class ResourcesFactoryImperius(IResourcesFactory):
         result = None
         try:
             if enum_building == EnumBuilding.City:
-                result = pygame.image.load("resources/Tribes/Imperius/City/Imperius city (level).png")
+                result = pygame.image.load("resources/Tribes/Imperius/City/Imperius city 1.png")
             elif enum_building == EnumBuilding.Sawmill:
                 result = pygame.image.load("resources/Buildings/Windmill/Windmill (level).png")
         except Exception as exc:
