@@ -41,7 +41,7 @@ class WindowMain:
         self.game = ControllerGame.new_game()
 
         self.ui_button_new_game = ComponentButton(
-            Rect(5, 5, 200, 49), "New Game")
+            Rect(5, 5, 200, 40), "New Game", (200, 200, 200))
 
         self.ui_button_new_game.add_listener_click(self.on_click_new_game)
 
@@ -72,6 +72,10 @@ class WindowMain:
             time.sleep(0.01)
 
     def update(self, delta_sec):
+
+        mouse_pos = pygame.mouse.get_pos()
+        mouse_buttons = pygame.mouse.get_pressed()
+        self.ui_button_new_game.trigger_mouse(mouse_pos, mouse_buttons)
 
         buildings_unused = list(self.surfaces_by_buildings.keys())
         missing_buildings = list(self.game.buildings)
@@ -158,6 +162,7 @@ class WindowMain:
                 i * 52 + i_offset + view_i_offset,
                 j * 15 + view_j_offset
             ))
-        # TODO buildings
+
         # TODO actors
-        # TODO UI
+
+        self.ui_button_new_game.draw(self.screen)

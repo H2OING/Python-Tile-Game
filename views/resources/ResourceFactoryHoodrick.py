@@ -17,13 +17,19 @@ class ResourceFactoryHoodrick(IResourcesFactory):
         result = None
         try:
             if enum_building == EnumBuilding.City:
-                result = pygame.image.load("resources/Tribes/Hoodrick/City/Hoodrick city 1.png")
+                result = pygame.image.load(f'resources/Tribes/Hoodrick/City/Hoodrick city {level}.png')
             elif enum_building == EnumBuilding.Sawmill:
-                result = pygame.image.load("resources/Buildings/Windmill/Windmill (level).png")
+                result = pygame.image.load(f'resources/Buildings/Sawmill/Sawmill level {level}.png')
         except Exception as exc:
             logger.exception(exc)
 
         return result
 
     def create_actor(self, enum_actor: EnumActor) -> pygame.Surface:
-        pass
+        result = None
+        try:
+            result = pygame.image.load(f'resources/Tribes/Hoodrick/Units/warrior.png')
+        except Exception as exc:
+            logger.exception(exc)
+
+        return result
