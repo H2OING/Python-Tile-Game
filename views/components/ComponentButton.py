@@ -18,7 +18,7 @@ class ComponentButton:
 
         pygame.draw.rect(
             self.button_up,
-            color=(255, 255, 170),
+            color=color,
             rect=pygame.Rect(2, 2, rect.width - 4, rect.height - 4)
         )
 

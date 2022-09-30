@@ -41,7 +41,7 @@ class WindowMain:
         self.game = ControllerGame.new_game()
 
         self.ui_button_new_game = ComponentButton(
-            Rect(5, 5, 200, 40), "New Game", (200, 200, 200))
+            Rect(5, 5, 200, 40), "New Game", (250, 250, 170))
 
         self.ui_button_new_game.add_listener_click(self.on_click_new_game)
 
@@ -76,6 +76,11 @@ class WindowMain:
         mouse_pos = pygame.mouse.get_pos()
         mouse_buttons = pygame.mouse.get_pressed()
         self.ui_button_new_game.trigger_mouse(mouse_pos, mouse_buttons)
+
+        if self.ui_button_new_game.mouse_is_over(mouse_pos):
+            self.ui_button_new_game.color = (250, 250, 120)
+        else:
+            self.ui_button_new_game.color = (250, 250, 170)
 
         buildings_unused = list(self.surfaces_by_buildings.keys())
         missing_buildings = list(self.game.buildings)
@@ -166,3 +171,4 @@ class WindowMain:
         # TODO actors
 
         self.ui_button_new_game.draw(self.screen)
+
